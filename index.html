@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cherukuri Manish — Digital Marketing Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #0e0e0e;
+    --page: #f9f7f4;
+    --accent: #1a6cf6;
+    --accent2: #f04e23;
+    --muted: #6b6b6b;
+    --card: #ffffff;
+    --border: #e5e2dd;
+    --tag-bg: #eef3ff;
+    --tag-col: #1a6cf6;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--page);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 15px;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 64px;
+    background: rgba(249,247,244,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem; font-weight: 700;
+    letter-spacing: -0.02em; color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted); font-size: 0.85rem;
+    font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6% 5% 6% 8%;
+    position: relative; z-index: 2;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 28px; height: 2px; background: var(--accent);
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.2rem);
+    font-weight: 700; line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  h1 em { color: var(--accent); font-style: italic; }
+  .hero-sub {
+    font-size: 1.05rem; color: var(--muted); font-weight: 300;
+    max-width: 400px; margin: 1.2rem 0 2.2rem;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.75rem 1.8rem; border-radius: 2px;
+    font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em;
+    text-transform: uppercase; text-decoration: none;
+    cursor: pointer; border: none; transition: all 0.25s;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #1259d4; transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--ink);
+    border: 1.5px solid var(--ink);
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--page); transform: translateY(-2px); }
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3rem;
+    padding-top: 2rem; border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem; font-weight: 700; line-height: 1;
+    color: var(--ink);
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label {
+    font-size: 0.75rem; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--muted); margin-top: 0.25rem;
+  }
+  .hero-right {
+    position: relative; display: flex;
+    align-items: center; justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f0f5ff 0%, #fdf6f2 100%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.5;
+  }
+  .hero-card-stack {
+    position: relative; width: 280px; z-index: 2;
+  }
+  .float-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    box-shadow: 0 8px 32px rgba(26,108,246,0.08);
+    position: relative;
+  }
+  .float-card + .float-card { margin-top: 1rem; }
+  .card-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; margin-bottom: 0.6rem;
+  }
+  .ci-blue { background: #eef3ff; }
+  .ci-orange { background: #fff2ee; }
+  .ci-green { background: #eefaf4; }
+  .card-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .card-val { font-size: 1.1rem; font-weight: 600; margin-top: 0.2rem; }
+  .card-delta {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    font-size: 0.75rem; font-weight: 600;
+    color: #16a34a; background: #dcfce7;
+    padding: 0.15rem 0.5rem; border-radius: 20px; margin-top: 0.3rem;
+  }
+  .float-card.accent-card {
+    background: var(--accent); border-color: var(--accent); color: #fff;
+    transform: rotate(2deg);
+  }
+  .accent-card .card-label, .accent-card .card-delta { color: rgba(255,255,255,0.7); }
+  .accent-card .card-delta { background: rgba(255,255,255,0.2); color: #fff; }
+  .badge-pill {
+    position: absolute; right: -18px; top: 10px;
+    background: var(--accent2); color: #fff;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 0.3rem 0.7rem;
+    border-radius: 20px; transform: rotate(3deg);
+    box-shadow: 0 4px 12px rgba(240,78,35,0.3);
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 8%; }
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .section-tag::before {
+    content: ''; display: block;
+    width: 20px; height: 2px; background: var(--accent);
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em; color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .section-intro { color: var(--muted); max-width: 540px; margin-bottom: 3rem; }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--card);
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+  }
+  .about-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem; font-style: italic;
+    line-height: 1.4; color: var(--ink);
+    border-left: 3px solid var(--accent);
+    padding-left: 1.5rem; margin-top: 1.5rem;
+  }
+  .about-right p {
+    color: var(--muted); margin-bottom: 1rem; font-weight: 300;
+  }
+  .contact-chips {
+    display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.8rem;
+  }
+  .chip {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.8rem; padding: 0.4rem 0.9rem;
+    border: 1.5px solid var(--border); border-radius: 100px;
+    color: var(--ink); text-decoration: none;
+    transition: all 0.2s;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--page); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.8rem;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(26,108,246,0.1);
+  }
+  .skill-icon {
+    font-size: 1.8rem; margin-bottom: 0.9rem;
+  }
+  .skill-title {
+    font-weight: 600; font-size: 0.95rem; margin-bottom: 0.8rem;
+  }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag {
+    background: var(--tag-bg); color: var(--tag-col);
+    font-size: 0.72rem; font-weight: 500;
+    padding: 0.25rem 0.65rem; border-radius: 4px;
+  }
+  .tag.orange { background: #fff2ee; color: #c73d0d; }
+  .tag.green { background: #eefaf4; color: #166534; }
+  .tag.purple { background: #f3eeff; color: #6d28d9; }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--card); }
+  .timeline { position: relative; }
+  .timeline::before {
+    content: ''; position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px; background: var(--border);
+  }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2.5rem;
+    padding: 0 0 3rem 2.5rem;
+    position: relative;
+  }
+  .tl-item::before {
+    content: ''; position: absolute;
+    left: -5px; top: 5px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--page);
+    box-shadow: 0 0 0 3px var(--accent);
+  }
+  .tl-meta { padding-top: 2px; }
+  .tl-period {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem;
+  }
+  .tl-company {
+    font-size: 0.82rem; color: var(--muted); font-weight: 400;
+  }
+  .tl-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 700;
+    margin-bottom: 1rem; color: var(--ink);
+  }
+  .tl-list { list-style: none; }
+  .tl-list li {
+    position: relative; padding-left: 1.2rem;
+    margin-bottom: 0.65rem; font-weight: 300;
+    color: #444; font-size: 0.9rem;
+  }
+  .tl-list li::before {
+    content: '→'; position: absolute;
+    left: 0; color: var(--accent); font-size: 0.7rem;
+    top: 3px;
+  }
+  .highlight { font-weight: 600; color: var(--ink); }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--page); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.8rem;
+  }
+  .proj-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .proj-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 48px rgba(26,108,246,0.1);
+  }
+  .proj-banner {
+    height: 8px;
+  }
+  .proj-banner.b1 { background: linear-gradient(90deg, var(--accent), #7cb3ff); }
+  .proj-banner.b2 { background: linear-gradient(90deg, var(--accent2), #ffb89a); }
+  .proj-body { padding: 1.6rem; }
+  .proj-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 700; margin-bottom: 0.6rem;
+  }
+  .proj-desc { font-size: 0.88rem; color: var(--muted); font-weight: 300; }
+  .proj-metric {
+    display: flex; align-items: center; gap: 0.5rem;
+    margin-top: 1.2rem;
+    font-size: 0.82rem; font-weight: 600;
+    color: var(--accent);
+  }
+  .proj-metric span { color: var(--muted); font-weight: 400; }
+
+  /* ── CERTIFICATIONS ── */
+  #certifications { background: var(--card); }
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+  }
+  .cert-card {
+    border: 1.5px solid var(--border); border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .cert-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+  .cert-badge {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: var(--tag-bg); display: flex;
+    align-items: center; justify-content: center;
+    font-size: 1rem; margin-bottom: 0.7rem;
+  }
+  .cert-name { font-size: 0.85rem; font-weight: 600; line-height: 1.3; }
+  .cert-issuer { font-size: 0.72rem; color: var(--muted); margin-top: 0.3rem; }
+
+  /* ── ACHIEVEMENTS ── */
+  #achievements {
+    background: var(--ink);
+    color: #fff;
+  }
+  #achievements .section-tag { color: #93b5ff; }
+  #achievements .section-tag::before { background: #93b5ff; }
+  #achievements h2 { color: #fff; }
+  #achievements .section-intro { color: rgba(255,255,255,0.5); }
+  .achv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .achv-card {
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px; padding: 1.8rem;
+    background: rgba(255,255,255,0.04);
+    transition: background 0.2s;
+  }
+  .achv-card:hover { background: rgba(255,255,255,0.08); }
+  .achv-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 700;
+    color: #93b5ff; line-height: 1;
+  }
+  .achv-desc { font-size: 0.88rem; color: rgba(255,255,255,0.65); margin-top: 0.5rem; font-weight: 300; }
+
+  /* ── CONTACT / FOOTER ── */
+  #contact {
+    background: var(--page); text-align: center;
+    padding: 5rem 8% 3rem;
+  }
+  .contact-grid {
+    display: flex; gap: 1rem; justify-content: center;
+    flex-wrap: wrap; margin-top: 2rem;
+  }
+  footer {
+    text-align: center; padding: 1.5rem;
+    font-size: 0.75rem; color: var(--muted);
+    border-top: 1px solid var(--border);
+    background: var(--page);
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+  .delay-4 { transition-delay: 0.4s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 4%; }
+    .nav-links { display: none; }
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 10% 6%; }
+    #about { grid-template-columns: 1fr; gap: 2rem; }
+    .tl-item { grid-template-columns: 1fr; gap: 0.5rem; padding-left: 1.8rem; }
+    section { padding: 3.5rem 5%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">M<span>.</span>Cherukuri</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow fade-up">Digital Marketing Specialist</div>
+    <h1 class="fade-up delay-1">
+      Crafting<br><em>Digital</em><br>Growth.
+    </h1>
+    <p class="hero-sub fade-up delay-2">
+      Brand Strategist · Growth Marketer · 4+ Years turning data into campaigns that convert.
+    </p>
+    <div class="hero-cta fade-up delay-3">
+      <a class="btn btn-primary" href="#experience">View My Work</a>
+      <a class="btn btn-outline" href="mailto:chmanishofficial@gmail.com">Get In Touch</a>
+    </div>
+    <div class="hero-stats fade-up delay-4">
+      <div>
+        <div class="stat-num">10<span>+</span></div>
+        <div class="stat-label">Clients Managed</div>
+      </div>
+      <div>
+        <div class="stat-num">4<span>x</span></div>
+        <div class="stat-label">Average ROAS</div>
+      </div>
+      <div>
+        <div class="stat-num">500<span>K</span></div>
+        <div class="stat-label">Organic Reach</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-grid"></div>
+    <div class="hero-card-stack">
+      <div class="float-card" style="transform:rotate(-2deg);z-index:1">
+        <div class="badge-pill">🔥 Live</div>
+        <div class="card-icon ci-blue">📊</div>
+        <div class="card-label">Organic Traffic Growth</div>
+        <div class="card-val">+47%</div>
+        <div class="card-delta">↑ This Month</div>
+      </div>
+      <div class="float-card accent-card" style="margin-left:24px">
+        <div class="card-icon" style="background:rgba(255,255,255,0.2)">🎯</div>
+        <div class="card-label">ROAS</div>
+        <div class="card-val" style="color:#fff;font-size:1.8rem">4× avg</div>
+        <div class="card-delta">↑ Paid Campaigns</div>
+      </div>
+      <div class="float-card" style="transform:rotate(1deg);margin-left:12px">
+        <div class="card-icon ci-green">📈</div>
+        <div class="card-label">Follower Growth</div>
+        <div class="card-val">+65%</div>
+        <div class="card-delta">↑ 18 months</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left">
+    <div class="section-tag fade-up">About Me</div>
+    <h2 class="fade-up delay-1">I Build<br>Digital Ecosystems.</h2>
+    <blockquote class="about-quote fade-up delay-2">
+      "I don't just run campaigns — I build ecosystems."
+    </blockquote>
+  </div>
+  <div class="about-right fade-up delay-2">
+    <p>
+      Results-driven Digital Marketing Specialist with <strong>4+ years</strong> of hands-on experience crafting data-backed strategies that drive measurable growth. Proven track record in SEO/SEM, social media marketing, content strategy, paid advertising, and performance analytics.
+    </p>
+    <p>
+      Currently leveraging freelance expertise to help diverse clients across e-commerce, SaaS, and D2C brands scale their digital presence across multiple platforms.
+    </p>
+    <p>
+      Based in <strong>Hyderabad, India</strong> · B.Tech, KL University (2021)
+    </p>
+    <div class="contact-chips">
+      <a class="chip" href="mailto:chmanishofficial@gmail.com">✉️ chmanishofficial@gmail.com</a>
+      <a class="chip" href="tel:+919666997100">📞 +91 9666997100</a>
+      <a class="chip" href="https://www.linkedin.com/in/cmc-891243214" target="_blank">💼 LinkedIn</a>
+      <span class="chip">📍 Hyderabad, India</span>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-tag fade-up">Core Competencies</div>
+  <h2 class="fade-up delay-1">Expertise & Tools</h2>
+  <p class="section-intro fade-up delay-2">A full-stack digital marketing toolkit across every channel that matters.</p>
+  <div class="skills-grid">
+    <div class="skill-card fade-up">
+      <div class="skill-icon">🔍</div>
+      <div class="skill-title">SEO & SEM</div>
+      <div class="tag-list">
+        <span class="tag">Keyword Research</span>
+        <span class="tag">On-Page SEO</span>
+        <span class="tag">Off-Page SEO</span>
+        <span class="tag">Google Ads</span>
+        <span class="tag">Bing Ads</span>
+        <span class="tag">PPC Campaigns</span>
+        <span class="tag">SERP Optimization</span>
+      </div>
+    </div>
+    <div class="skill-card fade-up delay-1">
+      <div class="skill-icon">📱</div>
+      <div class="skill-title">Social Media Marketing</div>
+      <div class="tag-list">
+        <span class="tag orange">Meta Ads</span>
+        <span class="tag orange">Instagram Marketing</span>
+        <span class="tag orange">LinkedIn Campaigns</span>
+        <span class="tag orange">YouTube Strategy</span>
+        <span class="tag orange">Content Scheduling</span>
+        <span class="tag orange">Community Management</span>
+      </div>
+    </div>
+    <div class="skill-card fade-up delay-2">
+      <div class="skill-icon">✍️</div>
+      <div class="skill-title">Content & Brand</div>
+      <div class="tag-list">
+        <span class="tag green">Content Strategy</span>
+        <span class="tag green">Copywriting</span>
+        <span class="tag green">Brand Identity</span>
+        <span class="tag green">Storytelling</span>
+        <span class="tag green">Email Marketing</span>
+        <span class="tag green">Blog Management</span>
+      </div>
+    </div>
+    <div class="skill-card fade-up delay-3">
+      <div class="skill-icon">📊</div>
+      <div class="skill-title">Analytics & Tools</div>
+      <div class="tag-list">
+        <span class="tag purple">Google Analytics 4</span>
+        <span class="tag purple">Search Console</span>
+        <span class="tag purple">SEMrush</span>
+        <span class="tag purple">HubSpot</span>
+        <span class="tag purple">Meta Business Suite</span>
+        <span class="tag purple">Canva</span>
+      </div>
+    </div>
+    <div class="skill-card fade-up">
+      <div class="skill-icon">💰</div>
+      <div class="skill-title">Paid Advertising</div>
+      <div class="tag-list">
+        <span class="tag">Facebook/Instagram Ads</span>
+        <span class="tag">Google Display Network</span>
+        <span class="tag">Retargeting</span>
+        <span class="tag">A/B Testing</span>
+      </div>
+    </div>
+    <div class="skill-card fade-up delay-1">
+      <div class="skill-icon">🤝</div>
+      <div class="skill-title">Team & Soft Skills</div>
+      <div class="tag-list">
+        <span class="tag orange">Cross-functional Collaboration</span>
+        <span class="tag orange">Agile Workflows</span>
+        <span class="tag orange">Client Communication</span>
+        <span class="tag orange">Leadership</span>
+        <span class="tag orange">Problem-Solving</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-tag fade-up">Work Experience</div>
+  <h2 class="fade-up delay-1">Professional Journey</h2>
+  <p class="section-intro fade-up delay-2">4+ years of delivering measurable digital growth across industries.</p>
+  <div class="timeline">
+    <div class="tl-item fade-up">
+      <div class="tl-meta">
+        <div class="tl-period">Jan 2024 – Present</div>
+        <div class="tl-company">Self-Employed · Freelance</div>
+      </div>
+      <div>
+        <div class="tl-role">Digital Marketing Consultant</div>
+        <ul class="tl-list">
+          <li>Manage <span class="highlight">end-to-end digital campaigns</span> for 10+ clients across e-commerce, SaaS, and D2C brands, achieving <span class="highlight">30–50% growth in organic traffic</span>.</li>
+          <li>Develop SEO strategies delivering an average <span class="highlight">40% increase in website visibility</span> within 3 months.</li>
+          <li>Design and run high-ROI paid ad campaigns on Google and Meta with budgets ranging from <span class="highlight">₹50K to ₹5L/month</span>.</li>
+          <li>Build and implement content marketing calendars aligned with brand voice, audience personas, and business goals.</li>
+          <li>Deliver monthly performance reports with actionable insights using <span class="highlight">GA4, SEMrush, and Meta Business Suite</span>.</li>
+          <li>Conduct in-depth competitor analysis and market research to identify opportunities and stay ahead of industry trends.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item fade-up delay-1">
+      <div class="tl-meta">
+        <div class="tl-period">Nov 2021 – Jan 2024</div>
+        <div class="tl-company">Team Purple Nest Studios</div>
+      </div>
+      <div>
+        <div class="tl-role">Digital Marketing Executive</div>
+        <ul class="tl-list">
+          <li>Led social media strategies across Instagram, Facebook, and LinkedIn, growing combined followers by <span class="highlight">65% in 18 months</span>.</li>
+          <li>Managed Google Ads and Meta ad campaigns at ₹2–3L/month, achieving consistent <span class="highlight">4× average ROAS</span>.</li>
+          <li>Drove SEO initiatives that elevated the studio website from <span class="highlight">page 3 to page 1 on Google</span> for multiple high-intent keywords.</li>
+          <li>Built and nurtured an engaged <span class="highlight">email subscriber base of 5,000+</span> contacts with a <span class="highlight">28% average open rate</span>.</li>
+          <li>Partnered with influencers and content creators, resulting in a <span class="highlight">3× increase in brand impressions</span>.</li>
+          <li>Mentored junior team members on digital marketing best practices, fostering continuous learning.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-tag fade-up">Notable Projects</div>
+  <h2 class="fade-up delay-1">Work That Stands Out</h2>
+  <p class="section-intro fade-up delay-2">Campaigns built from strategy to execution — all with measurable outcomes.</p>
+  <div class="projects-grid">
+    <div class="proj-card fade-up">
+      <div class="proj-banner b1"></div>
+      <div class="proj-body">
+        <div class="proj-title">Brand Launch — Purple Nest Studios</div>
+        <p class="proj-desc">Conceptualized and executed the studio's full digital brand launch. Coordinated across design, content, and paid media teams to build a launch-day presence from scratch.</p>
+        <div class="proj-metric">🚀 200K Impressions <span>on launch day · zero paid budget</span></div>
+      </div>
+    </div>
+    <div class="proj-card fade-up delay-1">
+      <div class="proj-banner b2"></div>
+      <div class="proj-body">
+        <div class="proj-title">Local SEO Domination — Service Business</div>
+        <p class="proj-desc">Designed a local SEO and Google Business Profile strategy that ranked a service business in the top 3 Google Map Pack positions within 60 days.</p>
+        <div class="proj-metric" style="color:var(--accent2)">📍 +55% Walk-in Inquiries <span>within 60 days</span></div>
+      </div>
+    </div>
+    <div class="proj-card fade-up delay-2">
+      <div class="proj-banner" style="background: linear-gradient(90deg, #16a34a, #86efac); height:8px"></div>
+      <div class="proj-body">
+        <div class="proj-title">E-Commerce Revenue Scale-Up</div>
+        <p class="proj-desc">Integrated SEO and paid campaign strategy for an e-commerce client, combining long-tail keyword targeting with full-funnel paid ads for compounding growth.</p>
+        <div class="proj-metric" style="color:#16a34a">📦 +120% Revenue YoY <span>integrated SEO + paid</span></div>
+      </div>
+    </div>
+    <div class="proj-card fade-up delay-3">
+      <div class="proj-banner" style="background: linear-gradient(90deg, #7c3aed, #c4b5fd); height:8px"></div>
+      <div class="proj-body">
+        <div class="proj-title">Product Launch — Organic Reach Campaign</div>
+        <p class="proj-desc">Delivered a successful product launch campaign using content strategy, influencer partnerships, and viral hooks — entirely organic with no paid spend.</p>
+        <div class="proj-metric" style="color:#7c3aed">👥 500K+ Users Reached <span>organically · 2 weeks</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-tag fade-up">By the Numbers</div>
+  <h2 class="fade-up delay-1">Results That Speak</h2>
+  <p class="section-intro fade-up delay-2">Every campaign is driven by data and measured by impact.</p>
+  <div class="achv-grid">
+    <div class="achv-card fade-up">
+      <div class="achv-num">4×</div>
+      <div class="achv-desc">Average ROAS across Google & Meta ad campaigns</div>
+    </div>
+    <div class="achv-card fade-up delay-1">
+      <div class="achv-num">40%</div>
+      <div class="achv-desc">Average visibility increase from SEO strategies within 3 months</div>
+    </div>
+    <div class="achv-card fade-up delay-2">
+      <div class="achv-num">65%</div>
+      <div class="achv-desc">Social media follower growth across platforms in 18 months</div>
+    </div>
+    <div class="achv-card fade-up delay-3">
+      <div class="achv-num">28%</div>
+      <div class="achv-desc">Email open rate on 5,000+ subscriber drip campaigns</div>
+    </div>
+    <div class="achv-card fade-up">
+      <div class="achv-num">120%</div>
+      <div class="achv-desc">Year-over-year revenue growth for e-commerce client</div>
+    </div>
+    <div class="achv-card fade-up delay-1">
+      <div class="achv-num">500K</div>
+      <div class="achv-desc">Organic impressions in 2 weeks for a product launch campaign</div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-tag fade-up">Credentials</div>
+  <h2 class="fade-up delay-1">Certifications</h2>
+  <p class="section-intro fade-up delay-2">Certified across all major digital marketing platforms.</p>
+  <div class="certs-grid">
+    <div class="cert-card fade-up">
+      <div class="cert-badge">🎯</div>
+      <div class="cert-name">Google Ads Certified</div>
+      <div class="cert-issuer">Search, Display & Shopping · Google</div>
+    </div>
+    <div class="cert-card fade-up delay-1">
+      <div class="cert-badge">📘</div>
+      <div class="cert-name">Meta Blueprint Certified</div>
+      <div class="cert-issuer">Media Planning & Buying · Meta</div>
+    </div>
+    <div class="cert-card fade-up delay-2">
+      <div class="cert-badge">📊</div>
+      <div class="cert-name">Google Analytics 4 (GA4)</div>
+      <div class="cert-issuer">Certification · Google Skillshop</div>
+    </div>
+    <div class="cert-card fade-up delay-3">
+      <div class="cert-badge">🧲</div>
+      <div class="cert-name">HubSpot Inbound Marketing</div>
+      <div class="cert-issuer">Certification · HubSpot Academy</div>
+    </div>
+    <div class="cert-card fade-up">
+      <div class="cert-badge">🔍</div>
+      <div class="cert-name">SEMrush SEO Toolkit</div>
+      <div class="cert-issuer">Certification · SEMrush Academy</div>
+    </div>
+    <div class="cert-card fade-up delay-1">
+      <div class="cert-badge">🎓</div>
+      <div class="cert-name">B.Tech</div>
+      <div class="cert-issuer">KL University, Vijayawada · 2017–2021</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag fade-up" style="justify-content:center">Let's Work Together</div>
+  <h2 class="fade-up delay-1" style="text-align:center">Ready to Grow<br>Your Brand?</h2>
+  <p class="section-intro fade-up delay-2" style="text-align:center;margin:1rem auto 0">
+    Whether you're looking to scale traffic, improve ROAS, or build a full digital strategy — let's talk.
+  </p>
+  <div class="contact-grid fade-up delay-3">
+    <a class="btn btn-primary" href="mailto:chmanishofficial@gmail.com">✉️ &nbsp;Email Manish</a>
+    <a class="btn btn-outline" href="tel:+919666997100">📞 &nbsp;+91 9666997100</a>
+    <a class="btn btn-outline" href="https://www.linkedin.com/in/cmc-891243214" target="_blank">💼 &nbsp;LinkedIn Profile</a>
+  </div>
+</section>
+
+<footer>
+  © 2025 Cherukuri Manish · Digital Marketing Specialist · Hyderabad, India
+</footer>
+
+<script>
+  // Scroll-triggered fade-up
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Nav active state
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 80) current = sec.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+    });
+  });
+</script>
+</body>
+</html>
